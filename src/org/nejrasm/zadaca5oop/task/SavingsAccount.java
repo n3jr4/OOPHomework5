@@ -1,5 +1,7 @@
 package org.nejrasm.zadaca5oop.task;
 
+import java.util.Scanner;
+
 public class SavingsAccount extends Account {
     private int dailyTransactionsLimit;
     private int maximumNumberOfTransactions;
@@ -15,6 +17,10 @@ public class SavingsAccount extends Account {
         this.dailyTransactionsLimit = dailyTransactionsLimit;
         this.maximumNumberOfTransactions = 3;
         this.numberOfTransactionsLeft = 3;
+    }
+
+    public SavingsAccount(final Owner owner, Scanner scanner) {
+        super(owner,scanner);
     }
 
     private boolean maximumOfTransactionsReached() {

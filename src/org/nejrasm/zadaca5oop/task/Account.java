@@ -1,5 +1,7 @@
 package org.nejrasm.zadaca5oop.task;
 
+import java.util.Scanner;
+
 public abstract class Account {
     private final Owner owner;
     private final String serialNumber;
@@ -13,6 +15,17 @@ public abstract class Account {
         this.passcode = passcode;
         this.balance = balance;
 
+    }
+
+    public Account (final Owner owner, Scanner scanner) throws IllegalArgumentException{
+        this.owner = owner;
+        System.out.println("Enter the serial number for account:");
+        this.serialNumber = scanner.next();
+        System.out.println("Enter the passcode for account:");
+        this.passcode = scanner.nextInt();
+        isPasscodeInRange(this.passcode);
+        System.out.println("Enter the balance of the account:");
+        this.balance = scanner.nextInt();
     }
 
     public double getBalance() {
@@ -46,7 +59,7 @@ public abstract class Account {
     }
 
     public boolean doesSerialNumberExists(final String serialNumber) {
-        return this.serialNumber == serialNumber;
+        return this.serialNumber.equals(serialNumber);
     }
 
     @Override

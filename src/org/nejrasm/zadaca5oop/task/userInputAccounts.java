@@ -1,0 +1,30 @@
+package org.nejrasm.zadaca5oop.task;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class userInputAccounts {
+    public userInputAccounts(final AccountsRegister accountsRegister, Scanner scanner) {
+    }
+
+    public static void createAccount(final AccountsRegister accountsRegister, Scanner scanner) {
+        System.out.println("Please enter the information about the the owner of account you want to create:");
+        Owner owner = new Owner(scanner);
+        System.out.println("Please enter the type of account you want to create: Current or Savings");
+        String typeOfAccount = scanner.next().toUpperCase();
+        System.out.println("Please enter the information about the the account you want to create:");
+        switch (typeOfAccount) {
+            case "CURRENT":
+                Account account = new CurrentAccount(owner, scanner);
+                accountsRegister.addAccount(account);
+                break;
+            case "SAVINGS":
+                account = new SavingsAccount(owner, scanner);
+                accountsRegister.addAccount(account);
+                break;
+            default:
+                System.out.println("Invalid account type.");
+        }
+    }
+}
