@@ -9,7 +9,7 @@ public class CurrentAccount extends Account {
     }
 
     public CurrentAccount(final Owner owner, Scanner scanner) {
-        super(owner,scanner);
+        super(owner, scanner);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class SavingsAccount extends Account {
     }
 
     public SavingsAccount(final Owner owner, Scanner scanner) {
-        super(owner,scanner);
+        super(owner, scanner);
     }
 
     private boolean maximumOfTransactionsReached() {

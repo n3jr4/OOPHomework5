@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class userInputAccounts {
-    public userInputAccounts(final AccountsRegister accountsRegister, Scanner scanner) {
+    public userInputAccounts(final ATM atm, Scanner scanner) {
     }
 
-    public static void createAccount(final AccountsRegister accountsRegister, Scanner scanner) {
+    public static void createAccount(final ATM atm, Scanner scanner) {
         System.out.println("Please enter the information about the the owner of account you want to create:");
         Owner owner = new Owner(scanner);
         System.out.println("Please enter the type of account you want to create: Current or Savings");
@@ -17,11 +17,11 @@ public class userInputAccounts {
         switch (typeOfAccount) {
             case "CURRENT":
                 Account account = new CurrentAccount(owner, scanner);
-                accountsRegister.addAccount(account);
+                atm.addAccount(account);
                 break;
             case "SAVINGS":
                 account = new SavingsAccount(owner, scanner);
-                accountsRegister.addAccount(account);
+                atm.addAccount(account);
                 break;
             default:
                 System.out.println("Invalid account type.");

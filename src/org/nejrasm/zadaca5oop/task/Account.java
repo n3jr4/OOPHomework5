@@ -17,7 +17,7 @@ public abstract class Account {
 
     }
 
-    public Account (final Owner owner, Scanner scanner) throws IllegalArgumentException{
+    public Account(final Owner owner, Scanner scanner) throws IllegalArgumentException {
         this.owner = owner;
         System.out.println("Enter the serial number for account:");
         this.serialNumber = scanner.next();
