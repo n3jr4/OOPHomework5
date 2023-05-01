@@ -21,6 +21,9 @@ public class SavingsAccount extends Account {
 
     public SavingsAccount(final Owner owner, Scanner scanner) {
         super(owner, scanner);
+        this.maximumNumberOfTransactions = 3;
+        this.numberOfTransactionsLeft = 3;
+        this.dailyTransactionsLimit = 1000;
     }
 
     private boolean maximumOfTransactionsReached() {
@@ -29,11 +32,11 @@ public class SavingsAccount extends Account {
         } else {
             numberOfTransactionsLeft -= 1;
         }
-        return numberOfTransactionsLeft >= 0;
+        return numberOfTransactionsLeft > 0;
     }
 
     private boolean dailyTransactionLimitReached(double amount) {
-        if (withdrownMoney > this.dailyTransactionsLimit) {
+        if (withdrownMoney > this.dailyTransactionsLimit || amount > this.dailyTransactionsLimit) {
             throw new IllegalStateException("You have reached your daily amount limit!");
         } else {
             this.dailyTransactionsLimit -= amount;
@@ -46,7 +49,7 @@ public class SavingsAccount extends Account {
         if (amount > this.getBalance()) {
             throw new IllegalStateException("You don't have enough balance to perform this transaction!");
         }
-        return amount < this.getBalance();
+       else return true;
     }
 
     private boolean transactionsChecker(final double amount) {
@@ -55,7 +58,7 @@ public class SavingsAccount extends Account {
 
     @Override
     public void withdraw(final double amount) {
-        if (transactionsChecker(amount) && balanceLeft(amount)) {
+        if (balanceLeft(amount) && transactionsChecker(amount)) {
             this.setBalance(this.getBalance() - amount);
         }
     }

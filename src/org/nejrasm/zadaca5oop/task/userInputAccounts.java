@@ -7,16 +7,16 @@ import java.util.Scanner;
 public class userInputAccounts {
     public userInputAccounts(final ATM atm, Scanner scanner) {
     }
-
     public static void createAccount(final ATM atm, Scanner scanner) {
         System.out.println("Please enter the information about the the owner of account you want to create:");
         Owner owner = new Owner(scanner);
         System.out.println("Please enter the type of account you want to create: Current or Savings");
         String typeOfAccount = scanner.next().toUpperCase();
         System.out.println("Please enter the information about the the account you want to create:");
+        Account account;
         switch (typeOfAccount) {
             case "CURRENT":
-                Account account = new CurrentAccount(owner, scanner);
+                account = new CurrentAccount(owner, scanner);
                 atm.addAccount(account);
                 break;
             case "SAVINGS":

@@ -7,13 +7,15 @@ import java.util.Scanner;
 public class BonusMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        final List<Account> listOfAccounts = new ArrayList<>(2);
+        int capacityOfArraylist = 2;
+        final List<Account> listOfAccounts = new ArrayList<>(capacityOfArraylist);
         final ATM atm = new ATM(listOfAccounts);
 
         try {
-            userInputAccounts.createAccount(atm, scanner);
-            userInputAccounts.createAccount(atm, scanner);
 
+            for (int i=0; i<capacityOfArraylist; i++) {
+                userInputAccounts.createAccount(atm, scanner);
+            }
             while (true) {
                 OptionsToPerform.options();
                 int entry = scanner.nextInt();
